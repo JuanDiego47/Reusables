@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de Correo Electrónico</title>
+</head>
+
+<body>
+    <h1>Ingrese su dirección de correo electrónico:</h1>
+    <form id="emailForm">
+        <input type="text" id="emailInput" placeholder="correo@ejemplo.com">
+        <button type="submit">Validar</button>
+    </form>
+    <p id="errorMessage" style="color: red;"></p>
+
+    <script>
+        const emailForm = document.getElementById('emailForm');
+        const emailInput = document.getElementById('emailInput');
+        const errorMessage = document.getElementById('errorMessage');
+
+        emailForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar que el formulario se envíe automáticamente.
+
+            const email = emailInput.value;
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            if (emailPattern.test(email)) {
+                errorMessage.textContent = ''; // Borrar el mensaje de error si el correo es válido.
+                alert('Correo electrónico válido: ' + email);
+            } else {
+                errorMessage.textContent = 'El formato del correo electrónico es incorrecto.';
+            }
+        });
+    </script>
+</body>
+
+</html>

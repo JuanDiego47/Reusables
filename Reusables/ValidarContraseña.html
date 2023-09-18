@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de Contraseña</title>
+</head>
+
+<body>
+    <h1>Ingrese una contraseña segura:</h1>
+    <form id="passwordForm">
+        <input type="password" id="passwordInput" placeholder="Contraseña">
+        <button type="submit">Validar</button>
+    </form>
+    <div id="errorMessages" style="color: red;"></div>
+
+    <script>
+        const passwordForm = document.getElementById('passwordForm');
+        const passwordInput = document.getElementById('passwordInput');
+        const errorMessages = document.getElementById('errorMessages');
+
+        passwordForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar que el formulario se envíe automáticamente.
+
+            const password = passwordInput.value;
+            const minLength = 8;
+            const hasUppercase = /[A-Z]/.test(password);
+            const hasLowercase = /[a-z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+
+            let errorMessage = '';
+
+            if (password.length < minLength) {
+                errorMessage += 'La contraseña debe tener al menos 8 caracteres.<br>';
+            }
+
+            if (!hasUppercase) {
+                errorMessage += 'La contraseña debe contener al menos una letra mayúscula.<br>';
+            }
+
+            if (!hasLowercase) {
+                errorMessage += 'La contraseña debe contener al menos una letra minúscula.<br>';
+            }
+
+            if (!hasNumber) {
+                errorMessage += 'La contraseña debe contener al menos un número.<br>';
+            }
+
+            if (errorMessage === '') {
+                errorMessages.innerHTML = ''; // Borrar mensajes de error si la contraseña es válida.
+                alert('Contraseña válida.');
+            } else {
+                errorMessages.innerHTML = errorMessage;
+            }
+        });
+    </script>
+</body>
+
+</html>
