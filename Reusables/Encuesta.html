@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta</title>
+</head>
+
+<body>
+    <h1>Encuesta</h1>
+    <form id="encuestaForm">
+        <h2>Pregunta 1: ¿Cuál es tu color favorito?</h2>
+        <label>
+            <input type="radio" name="pregunta1" value="Rojo"> Rojo
+        </label>
+        <label>
+            <input type="radio" name="pregunta1" value="Azul"> Azul
+        </label>
+        <label>
+            <input type="radio" name="pregunta1" value="Verde"> Verde
+        </label>
+
+        <h2>Pregunta 2: ¿Cuál es tu animal favorito?</h2>
+        <label>
+            <input type="radio" name="pregunta2" value="Perro"> Perro
+        </label>
+        <label>
+            <input type="radio" name="pregunta2" value="Gato"> Gato
+        </label>
+        <label>
+            <input type="radio" name="pregunta2" value="Otro"> Otro
+        </label>
+
+        <h2>Pregunta 3: ¿Te gustaría recibir actualizaciones por correo?</h2>
+        <label>
+            <input type="radio" name="pregunta3" value="Sí"> Sí
+        </label>
+        <label>
+            <input type="radio" name="pregunta3" value="No"> No
+        </label>
+
+        <button type="submit">Enviar Encuesta</button>
+    </form>
+
+    <div id="resultados" style="display: none;">
+        <h2>Resultados de la Encuesta:</h2>
+        <p>Pregunta 1: <span id="respuesta1"></span></p>
+        <p>Pregunta 2: <span id="respuesta2"></span></p>
+        <p>Pregunta 3: <span id="respuesta3"></span></p>
+    </div>
+
+    <script>
+        const encuestaForm = document.getElementById("encuestaForm");
+        const resultados = document.getElementById("resultados");
+        const respuesta1 = document.getElementById("respuesta1");
+        const respuesta2 = document.getElementById("respuesta2");
+        const respuesta3 = document.getElementById("respuesta3");
+
+        encuestaForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Obtener las respuestas seleccionadas
+            const respuestaPregunta1 = document.querySelector("input[name='pregunta1']:checked");
+            const respuestaPregunta2 = document.querySelector("input[name='pregunta2']:checked");
+            const respuestaPregunta3 = document.querySelector("input[name='pregunta3']:checked");
+
+            // Mostrar los resultados
+            respuesta1.textContent = respuestaPregunta1 ? respuestaPregunta1.value : "No respondida";
+            respuesta2.textContent = respuestaPregunta2 ? respuestaPregunta2.value : "No respondida";
+            respuesta3.textContent = respuestaPregunta3 ? respuestaPregunta3.value : "No respondida";
+
+            resultados.style.display = "block";
+        });
+    </script>
+</body>
+
+</html>

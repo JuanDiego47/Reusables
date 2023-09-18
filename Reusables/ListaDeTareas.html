@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <style>
+        /* Estilos CSS */
+    </style>
+</head>
+
+<body>
+    <h1>Lista de Tareas</h1>
+    <form id="taskForm">
+        <input type="text" id="taskInput" placeholder="Agregar una tarea" required>
+        <button type="submit">Agregar</button>
+    </form>
+    <ul id="taskList">
+        <!-- Aquí se mostrarán las tareas -->
+    </ul>
+
+    <script>
+        // Obtener elementos del DOM
+        const taskForm = document.getElementById("taskForm");
+        const taskInput = document.getElementById("taskInput");
+        const taskList = document.getElementById("taskList");
+
+        // Agregar evento al formulario para manejar la presentación de tareas
+        taskForm.addEventListener("submit", function(event) {
+            event.preventDefault(); // Evitar que el formulario se envíe
+
+            const taskText = taskInput.value.trim(); // Obtener el texto de la tarea
+
+            if (taskText === "") {
+                alert("Por favor, ingrese una tarea válida.");
+                return;
+            }
+
+            // Crear un nuevo elemento de lista (una tarea)
+            const taskItem = document.createElement("li");
+            taskItem.textContent = taskText;
+
+            // Agregar botón para marcar como completado
+            const completeButton = document.createElement("button");
+            completeButton.textContent = "Completar";
+            completeButton.addEventListener("click", function() {
+                taskItem.classList.toggle("completed");
+            });
+
+            // Agregar botón para eliminar
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Eliminar";
+            deleteButton.addEventListener("click", function() {
+                taskItem.remove();
+            });
+
+            // Agregar los botones a la tarea
+            taskItem.appendChild(completeButton);
+            taskItem.appendChild(deleteButton);
+
+            // Agregar la tarea a la lista
+            taskList.appendChild(taskItem);
+
+            // Limpiar el campo de entrada
+            taskInput.value = "";
+        });
+    </script>
+</body>
+
+</html>

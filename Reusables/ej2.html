@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #uno {
+            background-color: aqua;
+        }
+        
+        #dos {
+            background-color: blueviolet;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="uno" onmousemove="cambio()">
+        <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia sequi fugit earum deleniti commodi placeat ut et, magni maiores. Magni odio id nulla sint beatae ea adipisci, dolor inventore nihil.</h1>
+    </div>
+
+    <div id="dos">
+        <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos quia ipsum incidunt obcaecati iure quidem amet sed necessitatibus? Fugit corporis architecto vitae repellendus velit totam quas consectetur mollitia? Odio, laboriosam?</h1>
+
+    </div>
+</body>
+
+<script>
+    function cambio() {
+        let cuadro = document.getElementById('dos');
+        cuadro.style.backgroundColor = 'red';
+
+    }
+</script>
+
+</html>

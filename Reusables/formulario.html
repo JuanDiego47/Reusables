@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>FORMULARIO</h1>
+    </header>
+    <form action="procesar_informacion" id="registroForm">
+        <label for="">Inrese su nombre</label>
+        <input type="text" id="nombre">
+        <br>
+        <label for="">Ingrese su correo electronico</label>
+        <input type="email" id="email">
+        <br>
+        <label for="">Ingrese contraseña</label>
+        <input type="password" id="contraseña">
+
+        <button type="submit">Registrarse</button>
+
+
+    </form>
+
+    <script>
+        // Obtener el formulario
+        const registroForm = document.getElementById("registroForm");
+
+        // Agregar un evento de escucha al formulario cuando se envía
+        registroForm.addEventListener("submit", function(event) {
+            // Detener el envío del formulario por defecto
+            event.preventDefault();
+
+            // Obtener los valores de los campos del formulario
+            const nombre = document.getElementById("nombre").value;
+            const email = document.getElementById("email").value;
+            const contraseña = document.getElementById("contraseña").value;
+
+            // Realizar la validación
+            if (nombre.trim() === "") {
+                alert("Por favor, ingrese un nombre de usuario.");
+                return;
+            }
+
+            if (!validarEmail(email)) {
+                alert("Por favor, ingrese un correo electrónico válido.");
+                return;
+            }
+
+            if (contraseña.length < 8) {
+                alert("La contraseña debe tener al menos 8 caracteres.");
+                return;
+            }
+
+            // Si la validación es exitosa, enviar el formulario
+            registroForm.submit();
+        });
+
+        // Función para validar correo electrónico
+        function validarEmail(email) {
+            const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            return regex.test(email);
+        }
+    </script>
+
+</body>
+
+</html>

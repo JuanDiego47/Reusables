@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carga de Archivos</title>
+</head>
+
+<body>
+    <h1>Carga de Archivos</h1>
+    <form id="cargaArchivosForm" enctype="multipart/form-data">
+        <label for="archivo">Seleccione un archivo:</label>
+        <input type="file" id="archivo" name="archivo" accept=".jpg, .jpeg, .png, .pdf" required>
+        <br>
+
+        <p>Tamaño máximo permitido: 5 MB</p>
+
+        <button type="submit">Cargar Archivo</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        const cargaArchivosForm = document.getElementById("cargaArchivosForm");
+        const resultado = document.getElementById("resultado");
+
+        cargaArchivosForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const archivoInput = document.getElementById("archivo");
+            const archivo = archivoInput.files[0];
+
+            if (!archivo) {
+                resultado.innerHTML = '<p>Por favor, seleccione un archivo.</p>';
+                return;
+            }
+
+            // Verificar el tipo de archivo (aceptamos solo imágenes y PDF)
+            if (!archivo.type.startsWith("image/") && archivo.type !== "application/pdf") {
+                resultado.innerHTML = '<p>El archivo debe ser una imagen (JPG, JPEG, PNG) o un PDF.</p>';
+                return;
+            }
+
+            // Verificar el tamaño del archivo (máximo 5 MB)
+            if (archivo.size > 5 * 1024 * 1024) {
+                resultado.innerHTML = '<p>El archivo es demasiado grande. El tamaño máximo permitido es de 5 MB.</p>';
+                return;
+            }
+
+            // Aquí puedes agregar la lógica para cargar el archivo al servidor
+            // Por ahora, mostramos un mensaje de éxito
+            resultado.innerHTML = '<p>Archivo cargado con éxito.</p>';
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+</head>
+
+<body>
+    <h1>Inicio de Sesión</h1>
+    <form id="loginForm">
+        <label for="usuario">Nombre de Usuario:</label>
+        <input type="text" id="usuario" name="usuario" required>
+        <br>
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required>
+        <br>
+
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+
+    <div id="mensaje"></div>
+
+    <script>
+        const loginForm = document.getElementById("loginForm");
+        const mensaje = document.getElementById("mensaje");
+
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Obtener los valores del formulario
+            const usuario = document.getElementById("usuario").value;
+            const contrasena = document.getElementById("contrasena").value;
+
+            // Verificar las credenciales simuladas (reemplazar con tus propias credenciales)
+            if (usuario === "usuario" && contrasena === "contrasena") {
+                mensaje.innerHTML = '<p>Ingreso exitoso. Redireccionando...</p>';
+                setTimeout(function() {
+                    // Simular redireccionamiento a la página de inicio
+                    window.location.href = "pagina_de_inicio.html";
+                }, 2000); // Redireccionar después de 2 segundos
+            } else {
+                mensaje.innerHTML = '<p>Credenciales incorrectas. Intente nuevamente.</p>';
+            }
+        });
+    </script>
+</body>
+
+</html>

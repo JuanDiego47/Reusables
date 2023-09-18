@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <style>
+        .boton {
+            display: block;
+            width: 100px;
+            cursor: pointer;
+            margin: 10px;
+            border: 1px solid black
+        }
+    </style>
+</head>
+
+<body>
+    <div id="boton1" class="boton" onclick="pulsar()">Pulsar aquí</div>
+    <div id="boton2" class="boton" onclick="pulsar()">Pulsar aquí</div>
+</body>
+
+<script>
+    let btn1 = document.getElementById('boton1');
+    let btn2 = document.getElementById('boton');
+    btn1.addEventListener('click', pulsar);
+    btn1.addEventListener('click', pulsar);
+
+    function pulsar() {
+        alert(event.target.id);
+    }
+</script>
+
+</html>
